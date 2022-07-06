@@ -1,12 +1,7 @@
-pipeline {
-  agent any
-  stages {
+@Library('roboshop-jenkins-shared-library') _
+
+nodejs()
+
+1233
 
 
-    stage ('Download Dependencies') {
-      steps {
-        sh 'npm install'
-      }
-    }
-  }
-}
