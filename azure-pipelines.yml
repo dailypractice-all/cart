@@ -3,24 +3,15 @@ trigger:
 
 pool: Roboshop-workstation
 
+variables:
+  COMPONENT: cart
+
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: dailypractice-all/roboshop-azure-devops-templates
+      entrypoint: dailypractice-all
+
 stages:
-- stage: CI
-  jobs:
-  - job: CIWork
-    steps:
-    - script: npm install
-      displayName: 'Download Nodejs Dependencies'
-    - script: docker build -t cart .
-      displayName: 'Docker build cart image'
-
-
-- stage: DockerUpload
-  condition: succeeded()
-  jobs:
-  - job: DockerUpload
-    steps:
-    - script: |
-        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 504729315886.dkr.ecr.us-east-1.amazonaws.com
-        docker tag cart:latest 504729315886.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-        docker push 504729315886.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-      displayName: 'Pushing the build cart image to the AWS ECR (Elastic Container Registry'
+- template: nodejs.yml@templates
