@@ -4,5 +4,8 @@ trigger:
 pool: Roboshop-workstation
 
 steps:
-  - script: hostname
-    displayName: 'Run a one-line script'
+  - script: npm install
+    displayName: 'Download Nodejs Dependencies'
+
+- script: docker build cart .
+  displayName: 'Docker build cart image'
