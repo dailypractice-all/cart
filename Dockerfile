@@ -1,8 +1,7 @@
-FROM node #taking nodejs image from Docker hub
-RUN useradd roboshop # adding user roboshop
-RUN mkdir /app # creating the /app directory
+FROM node
+RUN useradd roboshop
+RUN mkdir /app
 RUN chown roboshop /app
-WORKDIR /app #moving to the working directory
-
+WORKDIR /app
 ADD server.js /app
 ADD node_modules /app
