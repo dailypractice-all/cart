@@ -6,3 +6,4 @@ WORKDIR /app
 USER    roboshop
 ADD    server.js /app
 ADD    node_modules/ /app/node_modules
+ENTRYPOINT ["node", "server.js"]
