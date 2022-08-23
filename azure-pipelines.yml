@@ -1,0 +1,8 @@
+trigger:
+  - main
+
+pool: Roboshop-workstation
+
+steps:
+  - script: hostname
+    displayName: 'Run a one-line script'
