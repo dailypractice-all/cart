@@ -4,14 +4,14 @@ trigger:
 pool: Roboshop-workstation
 
 stages:
-  - stage: CI
-    jobs:
-    - job: CIWork
-      steps:
-      - script: npm install
-        displayName: 'Download Nodejs Dependencies'
-      - script: docker build -t cart .
-        displayName: 'Docker build cart image'
+- stage: CI
+  jobs:
+  - job: CIWork
+    steps:
+    - script: npm install
+      displayName: 'Download Nodejs Dependencies'
+    - script: docker build -t cart .
+      displayName: 'Docker build cart image'
 
 
 - stage: DockerUpload
